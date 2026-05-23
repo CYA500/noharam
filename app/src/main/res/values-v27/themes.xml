@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Guardian" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/olive_green</item>
+        <item name="colorOnPrimary">@color/off_white</item>
+        <item name="colorPrimaryContainer">@color/olive_light</item>
+        <item name="android:statusBarColor">@color/olive_green_dark</item>
+        <item name="android:navigationBarColor">@color/olive_green_dark</item>
+    </style>
+
+    <!-- هنا نضيف الخصائص الخاصة بـ API 27+ فقط -->
+    <style name="Theme.Guardian.Lock" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/gold</item>
+        <item name="colorOnPrimary">@color/dark_bg</item>
+        <item name="android:windowBackground">@color/dark_bg</item>
+        <item name="android:windowShowWhenLocked">true</item>
+        <item name="android:windowTurnScreenOn">true</item>
+        <item name="android:windowDismissKeyguard">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/dark_bg</item>
+        <item name="android:navigationBarColor">@color/dark_bg</item>
+    </style>
+</resources>
