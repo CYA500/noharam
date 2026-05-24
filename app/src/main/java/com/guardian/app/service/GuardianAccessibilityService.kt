@@ -52,7 +52,12 @@ class GuardianAccessibilityService : AccessibilityService() {
     }
 
     override fun onServiceConnected() {
-        serviceInfo = AccessibilityServiceInfo().apply {
+    super.onServiceConnected()
+    
+    // تأخير كود حقن المتغيرات (Dagger Hilt) لحين التأكد من جاهزية الخدمة
+    try {
+        // هنا يمكن وضع تهيئة بسيطة وآمنة لا تعتمد على متغيرات Hilt بشكل معقد
+        val info = AccessibilityServiceInfo().apply {
             eventTypes = AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED or
                 AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED or
                 AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED
@@ -61,7 +66,12 @@ class GuardianAccessibilityService : AccessibilityService() {
                 AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS
             notificationTimeout = 100
         }
+        serviceInfo = info
+    } catch (e: Exception) {
+        // منع الخدمة من الانهيار في حال حدث أي خطأ أثناء التهيئة
+        e.printStackTrace()
     }
+}
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         event ?: return
