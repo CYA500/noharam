@@ -109,7 +109,7 @@ class GuardianAccessibilityService : AccessibilityService() {
         if (now - lastAlertTime < ALERT_DEBOUNCE_MS) return
         lastAnalysedText = text
 
-        when (val result = keywordEngine.analyse(text)) {
+        when (val threatLevel = keywordEngine.analyse(text).threatLevel) {
             ThreatLevel.LINK -> {
                 lastAlertTime = now
                 val minutes = Random.nextLong(30, 121)
